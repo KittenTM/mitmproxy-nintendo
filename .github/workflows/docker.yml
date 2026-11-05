@@ -5,6 +5,10 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-publish:
     strategy:
@@ -13,7 +17,7 @@ jobs:
           - local # Redirect Pretendo requests to a local server (default)
           - wiiu # For Wii U network dumps
           - 3ds # For 3DS network dumps
-    runs-on: ubuntu-24.04
+    runs-on: ${{ vars.CI_RUNNER || 'ubuntu-24.04' }}
 
     steps:
       - name: Checkout repository
