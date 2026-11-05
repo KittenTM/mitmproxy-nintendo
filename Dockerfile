@@ -35,7 +35,7 @@ ENV OPENSSL_DIR=${openssl_dir}
 ENV OPENSSL_STATIC=1
 RUN python3 -m venv venv
 RUN . ${cryptography_dir}/venv/bin/activate && \
-    python3 -m pip install cryptography --no-binary cryptography -v
+    python3 -m pip install cryptography==46.0.3 --no-binary cryptography -v
 
 # This is the main mitmproxy container that will be run. We use a new image so
 # the build tools are not left over in the final image.
